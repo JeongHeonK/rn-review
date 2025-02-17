@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import AuthStackNavigator from "../AuthStackNavigator";
+import AuthStackNavigator from "../stack/AuthStackNavigator";
 import MainDrawerNavigator from "../drawer/MainDrawerNavigator";
 
 function RootNavigator({}) {

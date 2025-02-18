@@ -1,9 +1,9 @@
-interface validateLogin {
+interface ValidateLogin {
   email: string;
   password: string;
 }
 
-export function validateLogin(values: validateLogin) {
+function validateUser(values: ValidateLogin) {
   let error = { email: "", password: "" };
 
   if (!/^[^\s@]+@[^/\s@]+\.[^/\s@]+$/.test(values.email)) {
@@ -15,4 +15,26 @@ export function validateLogin(values: validateLogin) {
   }
 
   return error;
+}
+
+export function validateLogin(values: ValidateLogin) {
+  return validateUser(values);
+}
+
+interface ValidateSignupProps extends ValidateLogin {
+  passwordConfirm: string;
+}
+
+export function validateSignup(values: ValidateSignupProps) {
+  const error = validateUser(values);
+  let signupError = { ...error, passwordConfirm: "" };
+
+  if (values.password !== values.passwordConfirm) {
+    signupError = {
+      ...signupError,
+      passwordConfirm: "비밀번호가 일치하지 않습니다.",
+    };
+  }
+
+  return signupError;
 }

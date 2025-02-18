@@ -33,7 +33,7 @@ function LoginScreen() {
           placeholder="비밀번호"
           error={login.error.password}
           touched={login.touched.password}
-          {...login.getTextInputProps("email")}
+          {...login.getTextInputProps("password")}
         />
         <CustomButton
           size="large"

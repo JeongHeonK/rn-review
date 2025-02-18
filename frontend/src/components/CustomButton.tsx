@@ -28,11 +28,11 @@ function CustomButton({
   return (
     <Pressable
       disabled={invalid}
-      style={[
+      style={({ pressed }) => [
         styles.container,
-        styles[variant],
         styles[size],
         invalid && styles.invalid,
+        pressed ? styles[`${variant}Pressed`] : styles[variant],
       ]}
       {...props}
     >
@@ -53,6 +53,14 @@ const styles = StyleSheet.create({
   },
   filled: {
     backgroundColor: colors.BLUE_800,
+  },
+  filledPressed: {
+    backgroundColor: colors.BLUE_500,
+  },
+  outlinedPressed: {
+    borderColor: colors.BLUE_500,
+    borderWidth: 1,
+    opacity: 0.6,
   },
   outlined: {
     borderColor: colors.BLUE_800,

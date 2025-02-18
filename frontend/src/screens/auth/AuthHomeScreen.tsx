@@ -18,6 +18,7 @@ function AuthHomeScreen({ navigation }: AuthHomeScreenProps) {
         onPress={() => navigation.navigate(authNavigations.LOGIN)}
       />
       <CustomButton
+        variant="outlined"
         label="회원가입 화면으로 이동"
         onPress={() => navigation.navigate(authNavigations.SIGNUP)}
       />

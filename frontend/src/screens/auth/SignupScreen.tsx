@@ -1,32 +1,65 @@
-import { StackScreenProps } from "@react-navigation/stack";
 import React from "react";
-import { Button, StyleSheet, Text, View } from "react-native";
-import { AuthStackParamList } from "../../navigations/stack/AuthStackNavigator";
-import { authNavigations } from "../../constants";
+import { SafeAreaView, StyleSheet, View } from "react-native";
+import InputField from "../../components/InputField";
+import CustomButton from "../../components/CustomButton";
+import { useForm } from "../../hooks";
+import { validateSignup } from "../../util";
 
-type SignupScreenProps = StackScreenProps<
-  AuthStackParamList,
-  typeof authNavigations.SIGNUP
->;
-
-function SignupScreen({ navigation }: SignupScreenProps) {
+function SignupScreen() {
+  const signup = useForm({
+    initialValues: {
+      email: "",
+      password: "",
+      passwordConfirm: "",
+    },
+    validate: validateSignup,
+  });
+  const handleSubmit = () => {
+    console.log(signup.inputValues);
+  };
   return (
-    <View style={styles.container}>
-      <Text>가입하쇼</Text>
-      <Button
-        title="home으로"
-        onPress={() => navigation.navigate("AuthHome")}
-      />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.inputContainer}>
+        <InputField
+          inputMode="email"
+          placeholder="아이디"
+          error={signup.error.email}
+          touched={signup.touched.email}
+          {...signup.getTextInputProps("email")}
+        />
+        <InputField
+          secureTextEntry
+          placeholder="비밀번호"
+          error={signup.error.password}
+          touched={signup.touched.password}
+          {...signup.getTextInputProps("password")}
+        />
+        <InputField
+          secureTextEntry
+          placeholder="비밀번호 확인"
+          error={signup.error.passwordConfirm}
+          touched={signup.touched.passwordConfirm}
+          {...signup.getTextInputProps("passwordConfirm")}
+        />
+        <CustomButton
+          size="large"
+          label="로그인"
+          variant="filled"
+          onPress={handleSubmit}
+        />
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: "center",
-    alignItems: "center",
     flex: 1,
-    gap: 10,
+    margin: 30,
+  },
+  inputContainer: {
+    gap: 12,
+    marginBottom: 30,
   },
 });
 

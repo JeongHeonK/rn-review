@@ -1,5 +1,11 @@
 {
   "extends": "@react-native/typescript-config/tsconfig.json",
-  "include": ["src", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "src",
+    "**/*.ts",
+    "**/*.tsx",
+    "gesture-handler.js",
+    "gesture-handler.native.js"
+  ],
   "exclude": ["node_modules", "build"]
 }

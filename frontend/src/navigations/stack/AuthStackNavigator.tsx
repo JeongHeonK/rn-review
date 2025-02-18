@@ -3,7 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { StyleSheet, View } from "react-native";
 import AuthHomeScreen from "../../screens/auth/AuthHomeScreen";
 import LoginScreen from "../../screens/auth/LoginScreen";
-import { authNavigations } from "../../constants/index";
+import { authNavigations, colors } from "../../constants/index";
 import SignupScreen from "../../screens/auth/SignupScreen";
 
 export type AuthStackParamList = {
@@ -19,11 +19,11 @@ function AuthStackNavigator() {
     <Stack.Navigator
       screenOptions={{
         cardStyle: {
-          backgroundColor: "white",
+          backgroundColor: colors.WHITE,
         },
         headerStyle: {
-          backgroundColor: "white",
-          shadowColor: "black",
+          backgroundColor: colors.WHITE,
+          shadowColor: colors.BLACK,
         },
         headerTitleStyle: {
           fontSize: 15,

@@ -23,6 +23,8 @@ function SignupScreen() {
         <InputField
           inputMode="email"
           placeholder="아이디"
+          returnKeyType="next"
+          blurOnSubmit={false}
           error={signup.error.email}
           touched={signup.touched.email}
           {...signup.getTextInputProps("email")}
@@ -30,6 +32,8 @@ function SignupScreen() {
         <InputField
           secureTextEntry
           placeholder="비밀번호"
+          returnKeyType="next"
+          blurOnSubmit={false}
           error={signup.error.password}
           touched={signup.touched.password}
           {...signup.getTextInputProps("password")}

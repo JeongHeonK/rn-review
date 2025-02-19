@@ -935,6 +935,8 @@ PODS:
   - React-Mapbuffer (0.74.7):
     - glog
     - React-debug
+  - react-native-encrypted-storage (4.0.3):
+    - React-Core
   - react-native-safe-area-context (5.2.0):
     - React-Core
   - React-nativeconfig (0.74.7)
@@ -1353,6 +1355,7 @@ DEPENDENCIES:
   - React-jsitracing (from `../node_modules/react-native/ReactCommon/hermes/executor/`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - React-Mapbuffer (from `../node_modules/react-native/ReactCommon`)
+  - react-native-encrypted-storage (from `../node_modules/react-native-encrypted-storage`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - React-nativeconfig (from `../node_modules/react-native/ReactCommon`)
   - React-NativeModulesApple (from `../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios`)
@@ -1449,6 +1452,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/logger"
   React-Mapbuffer:
     :path: "../node_modules/react-native/ReactCommon"
+  react-native-encrypted-storage:
+    :path: "../node_modules/react-native-encrypted-storage"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
   React-nativeconfig:
@@ -1539,6 +1544,7 @@ SPEC CHECKSUMS:
   React-jsitracing: 549d1177ff45058b1300652db58add8c357a11ed
   React-logger: 87cddd161bd9784d60fc5528f21c57ca07d2962a
   React-Mapbuffer: b6e208217a18044f0f1a183be8f6756ad67b42d7
+  react-native-encrypted-storage: db300a3f2f0aba1e818417c1c0a6be549038deb7
   react-native-safe-area-context: 849d7df29ecb2a7155c769c0b76849ba952c2aa3
   React-nativeconfig: 3b359be06d9ee8d64c1eacbca4f1040f331573fd
   React-NativeModulesApple: 511a01d5be0fdb768f6438dd672a79808451ab00

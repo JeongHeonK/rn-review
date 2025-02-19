@@ -57,5 +57,5 @@ const logout = async () => {
   await axiosInstance.post("auth/logout");
 };
 
-export { postSignup, postLogin, getProfile, getAccessToken };
+export { postSignup, postLogin, getProfile, getAccessToken, logout };
 export type { RequestUser, ResponseProfile, ResponseToken };

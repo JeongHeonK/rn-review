@@ -2,6 +2,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import {
   getAccessToken,
   getProfile,
+  logout,
   postLogin,
   postSignup,
   queryClient,
@@ -36,6 +37,20 @@ function useLogin(mutationOptions?: UseMutationCustomOptions) {
     onSettled: () => {
       queryClient.refetchQueries({ queryKey: ["auth", "getAccessToken"] });
       queryClient.invalidateQueries({ queryKey: ["auth", "getProfile"] });
+    },
+    ...mutationOptions,
+  });
+}
+
+function useLogout(mutationOptions?: UseMutationCustomOptions) {
+  return useMutation({
+    mutationFn: logout,
+    onSuccess: () => {
+      removeEncryptStorage("refreshToken");
+      removeHeader("Authorization");
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ["auth"] });
     },
     ...mutationOptions,
   });
@@ -85,8 +100,15 @@ function useAuth() {
 
   const isLogin = getProfileQuery.isSuccess;
   const loginMutation = useLogin();
+  const logoutMutation = useLogout();
 
-  return { signupMutation, refreshTokenQuery, isLogin, loginMutation };
+  return {
+    signupMutation,
+    refreshTokenQuery,
+    isLogin,
+    loginMutation,
+    logoutMutation,
+  };
 }
 
 export default useAuth;

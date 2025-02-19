@@ -1,11 +1,12 @@
-import React from "react";
-import { SafeAreaView, StyleSheet, View } from "react-native";
+import React, { useRef } from "react";
+import { SafeAreaView, StyleSheet, TextInput, View } from "react-native";
 import { useForm } from "../../hooks";
 import { validateLogin } from "../../util";
 import InputField from "../../components/InputField";
 import CustomButton from "../../components/CustomButton";
 
 function LoginScreen() {
+  const passwordRef = useRef<TextInput | null>(null);
   const login = useForm({
     initialValues: {
       email: "",
@@ -22,17 +23,26 @@ function LoginScreen() {
     <SafeAreaView style={styles.container}>
       <View style={styles.inputContainer}>
         <InputField
+          autoFocus
           inputMode="email"
           placeholder="아이디"
+          blurOnSubmit={false}
+          returnKeyType="next"
           error={login.error.email}
           touched={login.touched.email}
+          onSubmitEditing={() => passwordRef.current?.focus()}
           {...login.getTextInputProps("email")}
         />
         <InputField
           secureTextEntry
+          ref={passwordRef}
           placeholder="비밀번호"
+          blurOnSubmit={false}
+          returnKeyType="join"
           error={login.error.password}
+          textContentType="oneTimeCode"
           touched={login.touched.password}
+          onSubmitEditing={handleSubmit}
           {...login.getTextInputProps("password")}
         />
         <CustomButton

@@ -1,13 +1,12 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
 import AuthStackNavigator from "../stack/AuthStackNavigator";
 import MainDrawerNavigator from "../drawer/MainDrawerNavigator";
+import useAuth from "../../hooks/queries/useAuth";
 
 function RootNavigator({}) {
-  const isLogIn = false;
-  return <>{isLogIn ? <MainDrawerNavigator /> : <AuthStackNavigator />}</>;
-}
+  const { isLogin } = useAuth();
 
-const styles = StyleSheet.create({});
+  return <>{isLogin ? <MainDrawerNavigator /> : <AuthStackNavigator />}</>;
+}
 
 export default RootNavigator;

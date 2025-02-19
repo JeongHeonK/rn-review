@@ -8,7 +8,7 @@ import useAuth from "../../hooks/queries/useAuth";
 
 function LoginScreen() {
   const passwordRef = useRef<TextInput | null>(null);
-  const { signupMutation } = useAuth();
+  const { loginMutation } = useAuth();
   const login = useForm({
     initialValues: {
       email: "",
@@ -18,7 +18,7 @@ function LoginScreen() {
   });
 
   const handleSubmit = () => {
-    signupMutation.mutate(login.inputValues);
+    loginMutation.mutate(login.inputValues);
   };
 
   return (

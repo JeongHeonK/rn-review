@@ -17,7 +17,7 @@ import {
   removeHeader,
   setEncryptStorage,
   removeEncryptStorage,
-} from "../../util";
+} from "@/util";
 import { useEffect } from "react";
 
 function useSignup(mutationOptions?: UseMutationCustomOptions) {
